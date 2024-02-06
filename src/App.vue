@@ -1,30 +1,19 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-</script>
-
 <template>
-  <header>
-    <img src="./images/logo.svg" alt="logo" />
-    <nav>
-      <RouterLink to="/Features">Features</RouterLink>
-      <RouterLink to="/company">Company</RouterLink>
-      <RouterLink to="/careers">Careers</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-      <RouterLink to="/login">Login</RouterLink>
-      <RouterLink to="/register">Register</RouterLink>
-    </nav>
-  </header>
-
+  <the-navigation></the-navigation>
   <RouterView />
-
-  <div>
-    <h1>Make remote work</h1>
-    <p>
-      Get your team in sync, no matter your location. Streamline processes,
-      create team rituals, and watch productivity soar.
-    </p>
-    <button>Learn more</button>
-  </div>
+  <the-footer></the-footer>
 </template>
+
+<script>
+import { RouterLink, RouterView } from "vue-router";
+import TheNavigation from "./components/TheNavigation.vue";
+import TheFooter from "./components/TheFooter.vue";
+export default {
+  components: {
+    TheNavigation,
+    TheFooter,
+  },
+};
+</script>
 
 <style scoped></style>

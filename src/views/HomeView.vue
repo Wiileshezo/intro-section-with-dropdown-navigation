@@ -52,7 +52,7 @@ button {
   background-color: var(--Almost-Black);
 }
 .section1 {
-  padding: 2rem;
+  padding: 6rem 2rem 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -63,7 +63,7 @@ button {
 }
 .imgs-client {
   display: flex;
-  padding: 1rem;
+  padding: 5rem 1rem 0;
   align-items: center;
   justify-content: center;
 }

@@ -29,8 +29,9 @@
 <style scoped>
 .container {
   display: flex;
-  padding-inline: 6rem;
+  /* padding-inline: 6rem; */
   align-items: center;
+  padding-top: 10rem;
 }
 h1 {
   font-size: 5.6rem;
@@ -50,15 +51,18 @@ button {
   font-size: 1.3rem;
   color: var(--Almost-White);
   background-color: var(--Almost-Black);
+  border: 0;
 }
 .section1 {
-  padding: 6rem 2rem 0;
+  padding: 0 2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 55vw;
+  box-sizing: border-box;
 }
 .img-hero {
-  width: 40vw;
+  width: 45vw;
   height: 70vh;
 }
 .imgs-client {

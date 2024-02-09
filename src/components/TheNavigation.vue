@@ -24,12 +24,17 @@
       ></div>
       <Transition name="mobile-nav">
         <ul v-show="mobileNav" class="dropdown-nav">
-          <li><RouterLink class="link" to="/">Features</RouterLink></li>
+          <div class="icon icon-close-menu" @click="toggleMobileNav"></div>
+          <li class="pt-8">
+            <RouterLink class="link" to="/">Features</RouterLink>
+          </li>
           <li><RouterLink class="link" to="/">Company</RouterLink></li>
           <li><RouterLink class="link" to="/">Careers</RouterLink></li>
           <li><RouterLink class="link" to="/about">About</RouterLink></li>
-          <li><RouterLink class="link" to="/">Login</RouterLink></li>
-          <li>
+          <li class="center pt-8">
+            <RouterLink class="link" to="/">Login</RouterLink>
+          </li>
+          <li class="center">
             <RouterLink class="link register" to="/">Register</RouterLink>
           </li>
         </ul>
@@ -45,22 +50,20 @@ export default {
       scrollNav: null,
       mobile: null,
       mobileNav: null,
-      windowWidth: null,
     };
   },
   created() {
     window.addEventListener("resize", this.checkScreen);
     this.checkScreen();
-    console.log("it work");
   },
 
   mounted() {
     window.addEventListener("scroll", this.updateScroll);
   },
 
-  // unmounted() {
-  //   window.removeEventListener("resize", this.checkScreen);
-  // },
+  unmounted() {
+    window.removeEventListener("resize", this.checkScreen);
+  },
 
   methods: {
     toggleMobileNav() {
@@ -75,13 +78,14 @@ export default {
       this.scrollNav = false;
     },
     checkScreen() {
-      this.windowWidth = Window.innerWidth;
-      if (this.windowWidth <= 780) {
+      const windowWidth = window.innerWidth;
+      if (windowWidth <= 780) {
         this.mobile = true;
-        console.log("it work");
+        return;
       }
       this.mobile = false;
       this.mobileNav = false;
+      return;
     },
   },
 };
@@ -91,6 +95,7 @@ export default {
 header {
   width: 100%;
   z-index: 99;
+  top: -1px;
   position: fixed;
   transition: 0.5s ease all;
   background-color: var(--Almost-White);
@@ -119,7 +124,8 @@ a {
 }
 
 img {
-  padding-inline-end: 2rem;
+  padding-inline: 1rem;
+  width: 6rem;
   transition: 0.5s ease all;
 }
 .left-nav {
@@ -139,16 +145,19 @@ img {
   align-items: center;
   position: absolute;
   top: 2rem;
-  right: 3rem;
-}
-.icon-menu {
-  background-image: url("../images/icon-menu.svg");
-  background-repeat: no-repeat;
+  right: 2rem;
   width: 3rem;
   height: 2rem;
   transition: 0.8s ease all;
 }
-
+.icon-menu {
+  background-image: url("../images/icon-menu.svg");
+  background-repeat: no-repeat;
+}
+.icon-close-menu {
+  background-image: url("../images/icon-close-menu.svg");
+  background-repeat: no-repeat;
+}
 /* .icon-active {
 } */
 
@@ -158,20 +167,27 @@ img {
   position: fixed;
   width: 100%;
   height: 100%;
-  max-width: 30rem;
+  max-width: 25rem;
   background-color: var(--Almost-White);
   top: 0;
-  /* right: 0; */
-  left: 0;
+  right: 0;
 }
 
 .dropdown-nav > li {
   margin-right: 0;
   color: var(--Almost-Black);
-  font-size: 3rem;
-  padding: 2rem;
+  font-size: 2rem;
+  padding: 1rem;
 }
 
+.pt-8 {
+  padding-top: 8rem !important;
+}
+
+.center {
+  align-self: center;
+  padding-top: 8rem;
+}
 .register {
   border: 2px solid var(--Medium-Gray);
   border-radius: 1rem;
@@ -200,7 +216,7 @@ ul,
 
 .mobile-nav-enter-from,
 .mobile-nav-leave-to {
-  transform: translateX(-250px);
+  transform: translateX(250px);
 }
 .mobile-nav-enter-active {
   transition: 0.5s ease-out all;
@@ -215,8 +231,8 @@ ul,
 }
 
 @media screen and (max-width: 450px) {
-  .left-nav {
-    justify-content: none;
+  .register {
+    padding-inline: 5rem;
   }
 }
 

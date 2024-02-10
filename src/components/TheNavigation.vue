@@ -9,13 +9,13 @@
         <li><RouterLink class="link" to="/">Company</RouterLink></li>
         <li><RouterLink class="link" to="/">Careers</RouterLink></li>
         <li><RouterLink class="link" to="/about">About</RouterLink></li>
+      </ul>
+      <ul v-show="!mobile" class="right-nav">
         <li><RouterLink class="link" to="/">Login</RouterLink></li>
         <li>
           <RouterLink class="link register" to="/">Register</RouterLink>
         </li>
       </ul>
-      <!-- <ul class="right-nav">
-      </ul> -->
       <div
         class="icon icon-menu"
         v-show="mobile"
@@ -25,13 +25,13 @@
       <Transition name="mobile-nav">
         <ul v-show="mobileNav" class="dropdown-nav">
           <div class="icon icon-close-menu" @click="toggleMobileNav"></div>
-          <li class="pt-8">
+          <li class="pt-5">
             <RouterLink class="link" to="/">Features</RouterLink>
           </li>
           <li><RouterLink class="link" to="/">Company</RouterLink></li>
           <li><RouterLink class="link" to="/">Careers</RouterLink></li>
           <li><RouterLink class="link" to="/about">About</RouterLink></li>
-          <li class="center pt-8">
+          <li class="center pt-5">
             <RouterLink class="link" to="/">Login</RouterLink>
           </li>
           <li class="center">
@@ -39,12 +39,14 @@
           </li>
         </ul>
       </Transition>
+      <div class="backdrop" @click="toggleMobileNav" v-if="mobileNav"></div>
     </nav>
   </header>
 </template>
 <script>
 import { RouterLink } from "vue-router";
 export default {
+  emits: ["close"],
   data() {
     return {
       scrollNav: null,
@@ -107,7 +109,7 @@ header {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1.5rem;
   transition: 0.5s ease all;
 }
 
@@ -124,7 +126,6 @@ a {
 }
 
 img {
-  padding-inline: 1rem;
   width: 6rem;
   transition: 0.5s ease all;
 }
@@ -144,19 +145,19 @@ img {
   display: flex;
   align-items: center;
   position: absolute;
-  top: 2rem;
-  right: 2rem;
+  top: 1.5rem;
   width: 3rem;
   height: 2rem;
   transition: 0.8s ease all;
+  background-repeat: no-repeat;
 }
 .icon-menu {
   background-image: url("../images/icon-menu.svg");
-  background-repeat: no-repeat;
+  right: 1rem;
 }
 .icon-close-menu {
   background-image: url("../images/icon-close-menu.svg");
-  background-repeat: no-repeat;
+  right: 0;
 }
 /* .icon-active {
 } */
@@ -167,21 +168,32 @@ img {
   position: fixed;
   width: 100%;
   height: 100%;
-  max-width: 25rem;
+  max-width: 14rem;
   background-color: var(--Almost-White);
   top: 0;
   right: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .dropdown-nav > li {
   margin-right: 0;
   color: var(--Almost-Black);
-  font-size: 2rem;
+  font-size: 1rem;
   padding: 1rem;
 }
 
-.pt-8 {
-  padding-top: 8rem !important;
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+.pt-5 {
+  padding-top: 5rem !important;
 }
 
 .center {
@@ -232,7 +244,7 @@ ul,
 
 @media screen and (max-width: 450px) {
   .register {
-    padding-inline: 5rem;
+    padding: 0.7rem 2rem;
   }
 }
 

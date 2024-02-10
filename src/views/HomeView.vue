@@ -3,6 +3,13 @@
 <template>
   <div class="container">
     <div class="section1">
+      <img
+        src="../images/image-hero-mobile.png"
+        alt="image-hero"
+        class="hero-img"
+      />
+    </div>
+    <div class="section2">
       <h1>Make remote work</h1>
       <p>
         Get your team in sync, no matter your location. Streamline processes,
@@ -16,62 +23,69 @@
         <img src="../images/client-maker.svg" alt="" />
       </div>
     </div>
-    <div class="section2">
-      <img
-        src="../images/image-hero-desktop.png"
-        alt="image-hero"
-        class="img-hero"
-      />
-    </div>
   </div>
 </template>
 
 <style scoped>
 .container {
   display: flex;
-  /* padding-inline: 6rem; */
+  flex-direction: column;
   align-items: center;
-  padding-top: 10rem;
+  box-sizing: border-box;
+  padding-top: 5rem;
 }
 h1 {
-  font-size: 5.6rem;
   margin: 0;
   color: var(--Almost-Black);
+  font-size: 2.3rem;
 }
 p {
   color: var(--Medium-Gray);
-  font-size: 1.3rem;
-  padding-inline-end: 6rem;
-  line-height: 2rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   margin-block: 2rem;
 }
 button {
-  padding: 1rem 2rem;
-  border-radius: 1rem;
-  font-size: 1.3rem;
+  border-radius: 0.7rem;
   color: var(--Almost-White);
   background-color: var(--Almost-Black);
-  border: 0;
+  border: 2px solid var(--Almost-Black);
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
 }
+
+button:hover,
+button:active {
+  background-color: var(--Almost-White);
+  color: var(--Almost-Black);
+}
+
 .section1 {
-  padding: 0 2rem;
+  display: flex;
+  /* background-image: url("../images/image-hero-mobile.png"); */
+  background-repeat: no-repeat;
+}
+.section2 {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 55vw;
-  box-sizing: border-box;
+  align-items: center;
+  padding-inline: 2rem;
+  text-align: center;
 }
-.img-hero {
-  width: 45vw;
-  height: 70vh;
+.hero-img {
+  width: 100vw;
+  height: 60vh;
+  padding-block: 1rem 3rem;
 }
 .imgs-client {
   display: flex;
-  padding: 5rem 1rem 0;
   align-items: center;
   justify-content: center;
+  margin-block-start: 3rem;
 }
 .imgs-client > img {
-  padding: 1.5rem;
+  padding: 0.5rem;
+  width: 4rem;
 }
 </style>

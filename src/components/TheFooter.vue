@@ -12,10 +12,14 @@
 </template>
 
 <style scoped>
+footer {
+  display: flex;
+  justify-content: center;
+}
 .attribution {
   font-size: 11px;
   text-align: center;
-  padding-top: 4rem;
+  padding-block: 2rem;
 }
 .attribution a {
   color: hsl(228, 45%, 44%);

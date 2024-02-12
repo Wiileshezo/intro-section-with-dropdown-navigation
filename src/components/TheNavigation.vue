@@ -5,8 +5,65 @@
         <img src="../images/logo.svg" alt="logo" />
       </div>
       <ul v-show="!mobile" class="left-nav">
-        <li><RouterLink class="link" to="/">Features</RouterLink></li>
-        <li><RouterLink class="link" to="/">Company</RouterLink></li>
+        <li class="dropdown-list">
+          <RouterLink class="link" to="/">
+            Features
+            <img
+              src="../images/icon-arrow-down.svg"
+              alt=""
+              class="icon-arrow"
+            />
+          </RouterLink>
+          <div class="dropdown-list-content right-0">
+            <RouterLink to="/">
+              <img
+                src="../images/icon-todo.svg"
+                alt=""
+                class="dropdown-list-icon"
+              />
+              Todo List
+            </RouterLink>
+            <RouterLink to="/">
+              <img
+                src="../images/icon-calendar.svg"
+                alt=""
+                class="dropdown-list-icon"
+              />
+              Calendar
+            </RouterLink>
+            <RouterLink to="/">
+              <img
+                src="../images/icon-reminders.svg"
+                alt=""
+                class="dropdown-list-icon"
+              />
+              Reminders
+            </RouterLink>
+            <RouterLink to="/">
+              <img
+                src="../images/icon-planning.svg"
+                alt=""
+                class="dropdown-list-icon"
+              />
+              planning
+            </RouterLink>
+          </div>
+        </li>
+        <li class="dropdown-list">
+          <RouterLink class="link" to="/">
+            Company
+            <img
+              src="../images/icon-arrow-down.svg"
+              alt=""
+              class="icon-arrow"
+            />
+          </RouterLink>
+          <div class="dropdown-list-content">
+            <RouterLink to="/">History</RouterLink>
+            <RouterLink to="/">Our Team</RouterLink>
+            <RouterLink to="/">Blog</RouterLink>
+          </div>
+        </li>
         <li><RouterLink class="link" to="/">Careers</RouterLink></li>
         <li><RouterLink class="link" to="/about">About</RouterLink></li>
       </ul>
@@ -141,6 +198,47 @@ img {
   align-items: center;
 }
 
+.dropdown-list {
+  position: relative;
+}
+.dropdown-list-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 10rem;
+  box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  z-index: 1;
+  top: 2rem;
+  padding: 1rem;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.dropdown-list-content a {
+  display: block;
+  text-align: left;
+  padding: 0.7rem;
+}
+
+.dropdown-list-content > a:hover {
+  color: var(--Almost-Black);
+}
+.dropdown-list:hover .dropdown-list-content {
+  display: block;
+}
+
+.icon-arrow {
+  width: 1rem;
+}
+
+.dropdown-list-icon {
+  width: 1.2rem;
+  padding-inline-end: 0.5rem;
+}
+
 .icon {
   display: flex;
   align-items: center;
@@ -159,8 +257,6 @@ img {
   background-image: url("../images/icon-close-menu.svg");
   right: 0;
 }
-/* .icon-active {
-} */
 
 .dropdown-nav {
   display: flex;

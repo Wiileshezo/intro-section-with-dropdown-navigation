@@ -65,6 +65,7 @@ button:active {
   background-image: url("../images/image-hero-desktop.png");
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center bottom;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -91,6 +92,13 @@ button:active {
 @media screen and (max-width: 500px) {
   .section1 {
     background-image: url("../images/image-hero-mobile.png");
+    background-position: center top;
+    height: 35vh;
+    width: 95vw;
+  }
+  .section2 {
+    padding-inline: 1rem;
+    width: 90vw;
   }
 }
 

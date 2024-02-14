@@ -10,7 +10,7 @@
             Features
             <img
               src="../images/icon-arrow-down.svg"
-              alt=""
+              alt="icon-arrow-down"
               class="icon-arrow"
             />
           </RouterLink>
@@ -54,7 +54,7 @@
             Company
             <img
               src="../images/icon-arrow-down.svg"
-              alt=""
+              alt="icon-arrow-down"
               class="icon-arrow"
             />
           </RouterLink>
@@ -82,10 +82,65 @@
       <Transition name="mobile-nav">
         <ul v-show="mobileNav" class="dropdown-nav">
           <div class="icon icon-close-menu" @click="toggleMobileNav"></div>
-          <li class="pt-5">
-            <RouterLink class="link" to="/">Features</RouterLink>
+          <li class="pt-5 dropdown-list-mobile">
+            <RouterLink class="link" to="/">
+              Features
+              <img
+                src="../images/icon-arrow-down.svg"
+                alt="icon-arrow-down"
+                class="icon-arrow"
+              />
+            </RouterLink>
+            <div class="dropdown-list-content-mobile">
+              <RouterLink to="/">
+                <img
+                  src="../images/icon-todo.svg"
+                  alt=""
+                  class="dropdown-list-icon"
+                />
+                Todo List
+              </RouterLink>
+              <RouterLink to="/">
+                <img
+                  src="../images/icon-calendar.svg"
+                  alt=""
+                  class="dropdown-list-icon"
+                />
+                Calendar
+              </RouterLink>
+              <RouterLink to="/">
+                <img
+                  src="../images/icon-reminders.svg"
+                  alt=""
+                  class="dropdown-list-icon"
+                />
+                Reminders
+              </RouterLink>
+              <RouterLink to="/">
+                <img
+                  src="../images/icon-planning.svg"
+                  alt=""
+                  class="dropdown-list-icon"
+                />
+                planning
+              </RouterLink>
+            </div>
           </li>
-          <li><RouterLink class="link" to="/">Company</RouterLink></li>
+          <li class="dropdown-list-mobile">
+            <RouterLink class="link" to="/">
+              Company
+              <img
+                src="../images/icon-arrow-down.svg"
+                alt="icon-arrow-down"
+                class="icon-arrow"
+              />
+            </RouterLink>
+            <div class="dropdown-list-content-mobile">
+              <RouterLink to="/">History</RouterLink>
+              <RouterLink to="/">Our Team</RouterLink>
+              <RouterLink to="/">Blog</RouterLink>
+            </div>
+          </li>
           <li><RouterLink class="link" to="/">Careers</RouterLink></li>
           <li><RouterLink class="link" to="/about">About</RouterLink></li>
           <li class="center pt-5">
@@ -103,7 +158,6 @@
 <script>
 import { RouterLink } from "vue-router";
 export default {
-  emits: ["close"],
   data() {
     return {
       scrollNav: null,
@@ -279,6 +333,22 @@ img {
   padding: 1rem;
 }
 
+.dropdown-list-mobile {
+  background-color: var(--Almost-White);
+}
+
+.dropdown-list-content-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+.dropdown-list-content-mobile > a {
+  padding: 0.5rem;
+  margin-left: 1rem;
+}
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -316,6 +386,11 @@ ul,
 
 .link {
   transition: 0.5 ease all;
+}
+
+.link:active .img,
+.link:hover > img {
+  content: url("../images/icon-arrow-up.svg");
 }
 
 .scrolled-nav {

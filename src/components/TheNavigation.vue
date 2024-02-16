@@ -82,7 +82,7 @@
       <Transition name="mobile-nav">
         <ul v-show="mobileNav" class="dropdown-nav">
           <div class="icon icon-close-menu" @click="toggleMobileNav"></div>
-          <li class="pt-5 dropdown-list-mobile">
+          <li class="pt-5 dropdown-list-mobile" @click="toggleDropdownList">
             <RouterLink class="link" to="/">
               Features
               <img
@@ -126,7 +126,7 @@
               </RouterLink>
             </div>
           </li>
-          <li class="dropdown-list-mobile">
+          <li class="dropdown-list-mobile" @click="toggleDropdownList">
             <RouterLink class="link" to="/">
               Company
               <img
@@ -163,6 +163,7 @@ export default {
       scrollNav: null,
       mobile: null,
       mobileNav: null,
+      dropdownList: null,
     };
   },
   created() {
@@ -179,6 +180,34 @@ export default {
   },
 
   methods: {
+    toggleDropdownList(e) {
+      console.log(e.target.nextSibling);
+      this.dropdownList = e.target.nextSibling;
+
+      if (
+        !this.dropdownList.style.display ||
+        this.dropdownList?.style?.display == "none"
+      ) {
+        this.dropdownList.style.display = "flex";
+      } else {
+        this.dropdownList.style.display = "none";
+      }
+
+      // if (this.dropdownList && this.dropdownList.style) {
+      //   // Check if the display is "none" or not set
+      //   if (
+      //     !this.dropdownList.style.display ||
+      //     this.dropdownList.style.display === "none"
+      //   ) {
+      //     this.dropdownList.style.display = "flex";
+      //   } else {
+      //     this.dropdownList.style.display = "none";
+      //   }
+      // } else {
+      //   console.error("Dropdown list not properly initialized");
+      // }
+      console.log(this.dropdownList);
+    },
     toggleMobileNav() {
       this.mobileNav = !this.mobileNav;
     },
@@ -291,6 +320,7 @@ img {
 .dropdown-list-icon {
   width: 1.2rem;
   padding-inline-end: 0.5rem;
+  vertical-align: bottom;
 }
 
 .icon {
@@ -338,7 +368,7 @@ img {
 }
 
 .dropdown-list-content-mobile {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: flex-start;
   padding: 1rem;

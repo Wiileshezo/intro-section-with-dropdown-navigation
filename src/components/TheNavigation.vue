@@ -11,7 +11,7 @@
             <img
               src="../images/icon-arrow-down.svg"
               alt="icon-arrow-down"
-              class="icon-arrow"
+              class="icon-arrow arrow-up"
             />
           </RouterLink>
           <div class="dropdown-list-content right-0">
@@ -55,7 +55,7 @@
             <img
               src="../images/icon-arrow-down.svg"
               alt="icon-arrow-down"
-              class="icon-arrow"
+              class="icon-arrow arrow-up"
             />
           </RouterLink>
           <div class="dropdown-list-content">
@@ -87,7 +87,7 @@
               Features
               <img
                 src="../images/icon-arrow-down.svg"
-                alt="icon-arrow-down"
+                alt="icon-arrow"
                 class="icon-arrow"
               />
             </RouterLink>
@@ -131,7 +131,7 @@
               Company
               <img
                 src="../images/icon-arrow-down.svg"
-                alt="icon-arrow-down"
+                alt="icon-arrow"
                 class="icon-arrow"
               />
             </RouterLink>
@@ -164,6 +164,7 @@ export default {
       mobile: null,
       mobileNav: null,
       dropdownList: null,
+      iconArrow: null,
     };
   },
   created() {
@@ -181,32 +182,22 @@ export default {
 
   methods: {
     toggleDropdownList(e) {
-      console.log(e.target.nextSibling);
       this.dropdownList = e.target.nextSibling;
-
-      if (
-        !this.dropdownList.style.display ||
-        this.dropdownList?.style?.display == "none"
-      ) {
-        this.dropdownList.style.display = "flex";
+      this.iconArrow = e.target.lastChild;
+      if (this.dropdownList && this.dropdownList.style) {
+        if (
+          !this.dropdownList.style.display ||
+          this.dropdownList.style.display === "none"
+        ) {
+          this.dropdownList.style.display = "flex";
+          this.iconArrow.src = "icon-arrow-up.svg";
+        } else {
+          this.dropdownList.style.display = "none";
+          this.iconArrow.src = "icon-arrow-down.svg";
+        }
       } else {
-        this.dropdownList.style.display = "none";
+        console.error("Dropdown list not properly initialized");
       }
-
-      // if (this.dropdownList && this.dropdownList.style) {
-      //   // Check if the display is "none" or not set
-      //   if (
-      //     !this.dropdownList.style.display ||
-      //     this.dropdownList.style.display === "none"
-      //   ) {
-      //     this.dropdownList.style.display = "flex";
-      //   } else {
-      //     this.dropdownList.style.display = "none";
-      //   }
-      // } else {
-      //   console.error("Dropdown list not properly initialized");
-      // }
-      console.log(this.dropdownList);
     },
     toggleMobileNav() {
       this.mobileNav = !this.mobileNav;
@@ -284,6 +275,12 @@ img {
 .dropdown-list {
   position: relative;
 }
+
+.dropdown-list > a:active,
+.dropdown-list > a:hover {
+  color: var(--Almost-Black);
+}
+
 .dropdown-list-content {
   display: none;
   position: absolute;
@@ -306,6 +303,7 @@ img {
   padding: 0.7rem;
 }
 
+.dropdown-list-content > a:active,
 .dropdown-list-content > a:hover {
   color: var(--Almost-Black);
 }
@@ -418,8 +416,8 @@ ul,
   transition: 0.5 ease all;
 }
 
-.link:active .img,
-.link:hover > img {
+.dropdown-list:active > a .arrow-up,
+.dropdown-list:hover > a .arrow-up {
   content: url("../images/icon-arrow-up.svg");
 }
 

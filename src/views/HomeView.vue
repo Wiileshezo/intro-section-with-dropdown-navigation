@@ -62,7 +62,7 @@ button:active {
   width: 99vw;
   height: 45vh;
   padding-block: 2rem 6rem;
-  background-image: url("../images/image-hero-desktop.png");
+  background-image: url("@/images/image-hero-desktop.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center bottom;
@@ -91,7 +91,7 @@ button:active {
 }
 @media screen and (max-width: 500px) {
   .section1 {
-    background-image: url("../images/image-hero-mobile.png");
+    background-image: url("@/images/image-hero-mobile.png");
     background-position: center top;
     height: 35vh;
     width: 95vw;

@@ -276,9 +276,9 @@ img {
   position: relative;
 }
 
-.dropdown-list > a:active,
-.dropdown-list > a:hover {
-  color: var(--Almost-Black);
+.dropdown-list:active > a,
+.dropdown-list:hover > a {
+color: var(--Almost-Black);
 }
 
 .dropdown-list-content {
@@ -352,6 +352,7 @@ img {
   right: 0;
   margin: 0;
   padding: 0;
+  overflow-y: scroll;
 }
 
 .dropdown-nav > li {

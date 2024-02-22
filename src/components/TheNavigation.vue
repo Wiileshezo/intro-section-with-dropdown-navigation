@@ -278,7 +278,7 @@ img {
 
 .dropdown-list:active > a,
 .dropdown-list:hover > a {
-color: var(--Almost-Black);
+  color: var(--Almost-Black);
 }
 
 .dropdown-list-content {
@@ -444,7 +444,7 @@ ul,
 
 @media screen and (max-width: 450px) {
   .register {
-    padding: 0.7rem 2rem;
+    padding: 0.7rem 3.5rem;
   }
 }
 

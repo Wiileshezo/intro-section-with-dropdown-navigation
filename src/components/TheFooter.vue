@@ -17,11 +17,21 @@ footer {
   justify-content: center;
 }
 .attribution {
-  font-size: 11px;
+  font-size: 0.6rem;
   text-align: center;
   padding-block: 2rem;
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+@media screen and (min-width: 1000px) {
+  .attribution {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .attribution {
+    font-size: 1rem;
+  }
 }
 </style>

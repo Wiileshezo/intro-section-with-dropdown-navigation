@@ -6,14 +6,14 @@
       </div>
       <ul v-show="!mobile" class="left-nav">
         <li class="dropdown-list">
-          <RouterLink class="link" to="/">
+          <a class="link" href="javascript:void(0)">
             Features
             <img
               src="../images/icon-arrow-down.svg"
               alt="icon-arrow-down"
               class="icon-arrow arrow-up"
             />
-          </RouterLink>
+          </a>
           <div class="dropdown-list-content right-0">
             <RouterLink to="/">
               <img
@@ -50,14 +50,14 @@
           </div>
         </li>
         <li class="dropdown-list">
-          <RouterLink class="link" to="/">
+          <a class="link" href="javascript:void(0)">
             Company
             <img
               src="../images/icon-arrow-down.svg"
               alt="icon-arrow-down"
               class="icon-arrow arrow-up"
             />
-          </RouterLink>
+          </a>
           <div class="dropdown-list-content">
             <RouterLink to="/">History</RouterLink>
             <RouterLink to="/">Our Team</RouterLink>
@@ -81,16 +81,20 @@
       ></div>
       <Transition name="mobile-nav">
         <ul v-show="mobileNav" class="dropdown-nav">
-          <div class="icon icon-close-menu" @click="toggleMobileNav"></div>
+          <div
+            class="icon icon-close-menu"
+            :aria-expanded="mobileNav"
+            @click="toggleMobileNav"
+          ></div>
           <li class="pt-5 dropdown-list-mobile" @click="toggleDropdownList">
-            <RouterLink class="link" to="/">
+            <a class="link" href="javascript:void(0)">
               Features
               <img
                 src="../images/icon-arrow-down.svg"
                 alt="icon-arrow"
                 class="icon-arrow"
               />
-            </RouterLink>
+            </a>
             <div class="dropdown-list-content-mobile">
               <RouterLink to="/">
                 <img
@@ -127,14 +131,14 @@
             </div>
           </li>
           <li class="dropdown-list-mobile" @click="toggleDropdownList">
-            <RouterLink class="link" to="/">
+            <a class="link" href="javascript:void(0)">
               Company
               <img
                 src="../images/icon-arrow-down.svg"
                 alt="icon-arrow"
                 class="icon-arrow"
               />
-            </RouterLink>
+            </a>
             <div class="dropdown-list-content-mobile">
               <RouterLink to="/">History</RouterLink>
               <RouterLink to="/">Our Team</RouterLink>
@@ -181,6 +185,10 @@ export default {
   },
 
   methods: {
+    preventNavigation(e) {
+      e.preventDefault();
+    },
+
     toggleDropdownList(e) {
       this.dropdownList = e.target.nextSibling;
       this.iconArrow = e.target.lastChild;
@@ -199,9 +207,16 @@ export default {
         console.error("Dropdown list not properly initialized");
       }
     },
+
     toggleMobileNav() {
       this.mobileNav = !this.mobileNav;
+      if (this.mobileNav) {
+        document.body.style.overflowY = "hidden";
+      } else {
+        document.body.style.overflowY = "unset";
+      }
     },
+
     updateScroll() {
       const scrollPosition = window.scrollY;
       if (scrollPosition > 50) {
@@ -210,6 +225,7 @@ export default {
       }
       this.scrollNav = false;
     },
+
     checkScreen() {
       const windowWidth = window.innerWidth;
       if (windowWidth <= 780) {
@@ -217,9 +233,15 @@ export default {
         return;
       }
       this.mobile = false;
-      this.mobileNav = false;
       return;
     },
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log("The navigation cmp beforeRouteEnter");
+    console.log(to, from);
+    if (this.mobileNav) {
+      next();
+    }
   },
 };
 </script>

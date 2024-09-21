@@ -20,4 +20,10 @@ const router = createRouter({
   ],
 });
 
+router.beforeEach((_, _2) => {
+  let closeBtn = document.querySelector(".icon-close-menu");
+  if (closeBtn.getAttribute("aria-expanded")) {
+    closeBtn.click();
+  }
+});
 export default router;

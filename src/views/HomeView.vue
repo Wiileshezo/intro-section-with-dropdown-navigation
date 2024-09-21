@@ -93,7 +93,7 @@ button:active {
   .section1 {
     background-image: url("@/images/image-hero-mobile.png");
     background-position: center top;
-    height: 35vh;
+    height: 20vh;
     width: 100vw;
   }
   .section2 {
@@ -110,6 +110,7 @@ button:active {
   }
   .section1 {
     width: 50vw;
+    height: 30vh;
   }
   .section2 {
     width: 40vw;
@@ -147,10 +148,12 @@ button:active {
   }
 
   h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
+    padding-inline: 0 5rem;
   }
   p {
     font-size: 1rem;
+    padding-inline: 0 4rem;
   }
   button {
     margin-block-end: 2rem;

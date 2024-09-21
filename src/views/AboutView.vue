@@ -6,7 +6,7 @@
 
 <style scoped>
 div {
-  padding: 5rem 1rem 0;
+  padding: 7rem 1rem 0;
   text-align: center;
 }
 h1 {

@@ -11,10 +11,10 @@
       </p>
       <button>Learn more</button>
       <div class="imgs-client">
-        <img src="../images/client-databiz.svg" alt="" />
-        <img src="../images/client-audiophile.svg" alt="" />
-        <img src="../images/client-meet.svg" alt="" />
-        <img src="../images/client-maker.svg" alt="" />
+        <img src="../client-databiz.svg" alt="" />
+        <img src="../client-audiophile.svg" alt="" />
+        <img src="../client-meet.svg" alt="" />
+        <img src="../client-maker.svg" alt="" />
       </div>
     </div>
   </div>
@@ -63,7 +63,7 @@ button:active {
   width: 99vw;
   height: 45vh;
   padding-block: 2rem 6rem;
-  background-image: url("@/images/image-hero-desktop.png");
+  background-image: url("./image-hero-desktop.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center bottom;
@@ -91,7 +91,7 @@ button:active {
 }
 @media screen and (max-width: 500px) {
   .section1 {
-    background-image: url("@/images/image-hero-mobile.png");
+    background-image: url("./image-hero-mobile.png");
     background-position: center top;
     height: 20vh;
     width: 100vw;
